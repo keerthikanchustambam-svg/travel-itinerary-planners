@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderPlan - Travel Itinerary Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand" id="nav-brand">
+        <i class="fa-solid fa-compass brand-icon"></i>
+        <span class="brand-name">Wander<span>Plan</span></span>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-secondary" id="btn-view-trips">
+          <i class="fa-solid fa-suitcase"></i> All Trips
+        </button>
+        <button class="btn btn-primary" id="btn-open-create-trip">
+          <i class="fa-solid fa-plus"></i> New Trip
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+
+    <!-- VIEW 1: TRIPS DASHBOARD -->
+    <section id="trips-view" class="view active">
+      <div class="dashboard-hero">
+        <div class="hero-content">
+          <h1>Plan Your Next Adventure</h1>
+          <p>Organize day-by-day itineraries, track travel budgets, and craft unforgettable journeys.</p>
+          <div class="hero-search-bar">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="trip-search-input" placeholder="Search trips by destination or title...">
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h2>Your Trips</h2>
+          <p class="subtitle" id="trips-count-label">Loading your itineraries...</p>
+        </div>
+        <button class="btn btn-primary" id="btn-hero-new-trip">
+          <i class="fa-solid fa-plus"></i> Create Itinerary
+        </button>
+      </div>
+
+      <!-- Trips Grid -->
+      <div class="trips-grid" id="trips-grid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: ITINERARY PLANNER -->
+    <section id="planner-view" class="view">
+      <!-- Breadcrumb / Back button -->
+      <div class="planner-top-bar">
+        <button class="btn btn-ghost" id="btn-back-to-trips">
+          <i class="fa-solid fa-arrow-left"></i> Back to Trips
+        </button>
+        <div class="planner-actions">
+          <button class="btn btn-secondary" id="btn-print-itinerary" title="Print or save as PDF">
+            <i class="fa-solid fa-print"></i> Print Itinerary
+          </button>
+          <button class="btn btn-danger-outline" id="btn-delete-trip">
+            <i class="fa-solid fa-trash"></i> Delete Trip
+          </button>
+        </div>
+      </div>
+
+      <!-- Trip Hero Banner -->
+      <div class="trip-banner" id="trip-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+          <span class="destination-pill" id="banner-destination"><i class="fa-solid fa-location-dot"></i> Destination</span>
+          <h1 id="banner-title">Trip Title</h1>
+          <p class="banner-dates" id="banner-dates"><i class="fa-regular fa-calendar"></i> Nov 10 - Nov 14, 2026</p>
+          <p class="banner-notes" id="banner-notes"></p>
+        </div>
+      </div>
+
+      <!-- Quick Stats & Budget Bar -->
+      <div class="stats-card">
+        <div class="stat-item">
+          <span class="stat-label">Total Duration</span>
+          <span class="stat-value" id="stat-duration">0 Days</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Planned Activities</span>
+          <span class="stat-value" id="stat-activities">0</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Est. Expenses</span>
+          <span class="stat-value text-accent" id="stat-expenses">$0</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Budget</span>
+          <span class="stat-value" id="stat-budget">$0</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Remaining</span>
+          <span class="stat-value" id="stat-remaining">$0</span>
+        </div>
+      </div>
+
+      <!-- Budget Progress Bar -->
+      <div class="budget-meter-container">
+        <div class="budget-meter-header">
+          <span>Budget Usage</span>
+          <span id="budget-percentage">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="budget-progress-bar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Day Navigation Tabs & Controls -->
+      <div class="itinerary-controls">
+        <div class="day-tabs-scroller" id="day-tabs-container">
+          <!-- Day buttons injected here -->
+        </div>
+        <div class="day-actions">
+          <button class="btn btn-secondary btn-sm" id="btn-add-day">
+            <i class="fa-solid fa-calendar-plus"></i> Add Day
+          </button>
+          <button class="btn btn-primary btn-sm" id="btn-open-add-activity">
+            <i class="fa-solid fa-plus"></i> Add Activity
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Day Itinerary Content -->
+      <div class="day-content">
+        <div class="day-header-row">
+          <h2 id="current-day-heading">Day 1</h2>
+          <span class="day-date-tag" id="current-day-date"></span>
+        </div>
+
+        <!-- Activity Timeline -->
+        <div class="timeline" id="activities-timeline">
+          <!-- Activities injected here -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: CREATE TRIP -->
+  <div class="modal" id="modal-create-trip">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-plane-departure"></i> Plan a New Trip</h3>
+        <button class="modal-close" data-close="modal-create-trip">&times;</button>
+      </div>
+      <form id="form-create-trip">
+        <div class="form-group">
+          <label for="trip-title">Trip Name *</label>
+          <input type="text" id="trip-title" required placeholder="e.g., Summer in Swiss Alps">
+        </div>
+        <div class="form-group">
+          <label for="trip-destination">Destination *</label>
+          <input type="text" id="trip-destination" required placeholder="e.g., Switzerland, Interlaken">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="trip-start-date">Start Date</label>
+            <input type="date" id="trip-start-date" required>
+          </div>
+          <div class="form-group">
+            <label for="trip-end-date">End Date</label>
+            <input type="date" id="trip-end-date" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="trip-budget">Total Budget</label>
+            <input type="number" id="trip-budget" min="0" placeholder="e.g., 2000" value="1500">
+          </div>
+          <div class="form-group">
+            <label for="trip-currency">Currency</label>
+            <select id="trip-currency">
+              <option value="$" selected>USD ($)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GBP (£)</option>
+              <option value="₹">INR (₹)</option>
+              <option value="¥">JPY (¥)</option>
+              <option value="A$">AUD (A$)</option>
+              <option value="C$">CAD (C$)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trip-cover">Cover Image URL (optional)</label>
+          <input type="url" id="trip-cover" placeholder="https://images.unsplash.com/...">
+          <small class="form-hint">Leave blank to use a default high-resolution travel banner.</small>
+        </div>
+        <div class="form-group">
+          <label for="trip-notes">Notes / Packing Reminders</label>
+          <textarea id="trip-notes" rows="3" placeholder="Hotel reservations, passport validity, travel insurance, etc."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="modal-create-trip">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Create Trip</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD ACTIVITY -->
+  <div class="modal" id="modal-add-activity">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-map-pin"></i> Add New Activity</h3>
+        <button class="modal-close" data-close="modal-add-activity">&times;</button>
+      </div>
+      <form id="form-add-activity">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="act-day-select">Assign to Day *</label>
+            <select id="act-day-select" required>
+              <!-- Filled dynamically with trip days -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="act-time">Time</label>
+            <input type="time" id="act-time" value="10:00" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="act-title">Activity Title *</label>
+          <input type="text" id="act-title" required placeholder="e.g. Visit the Eiffel Tower & Summit">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="act-category">Category</label>
+            <select id="act-category">
+              <option value="Sightseeing">🏛️ Sightseeing</option>
+              <option value="Food">🍜 Food & Dining</option>
+              <option value="Transport">🚆 Transport / Flight</option>
+              <option value="Hotel">🏨 Hotel / Stay</option>
+              <option value="Activity">🎒 Adventure / Tour</option>
+              <option value="Shopping">🛍️ Shopping</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="act-cost">Estimated Cost</label>
+            <input type="number" id="act-cost" min="0" step="any" placeholder="0" value="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="act-location">Location / Address</label>
+          <input type="text" id="act-location" placeholder="e.g. Champ de Mars, 5 Av. Anatole France">
+        </div>
+        <div class="form-group">
+          <label for="act-notes">Special Instructions / Booking Refs</label>
+          <textarea id="act-notes" rows="2" placeholder="e.g. Confirmation #84920, arrive 15 mins early"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="modal-add-activity">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add to Itinerary</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

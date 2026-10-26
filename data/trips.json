@@ -1,0 +1,166 @@
+[
+  {
+    "id": "trip_sample_1",
+    "title": "Autumn in Kyoto & Tokyo",
+    "destination": "Japan",
+    "startDate": "2026-11-10",
+    "endDate": "2026-11-14",
+    "budget": 2500,
+    "currency": "$",
+    "coverImage": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
+    "notes": "Remember to exchange Yen and pick up the Japan Rail Pass at Haneda Airport.",
+    "days": [
+      {
+        "dayNumber": 1,
+        "date": "2026-11-10",
+        "title": "Arrival in Tokyo & Shinjuku Night Walk",
+        "activities": [
+          {
+            "id": "act_101",
+            "time": "14:30",
+            "title": "Check-in at Hotel Gracery Shinjuku",
+            "category": "Hotel",
+            "location": "Kabukicho, Shinjuku",
+            "cost": 180,
+            "notes": "Drop luggage and freshen up.",
+            "completed": true
+          },
+          {
+            "id": "act_102",
+            "time": "18:00",
+            "title": "Ramen Dinner at Ichiran",
+            "category": "Food",
+            "location": "Shinjuku East Exit",
+            "cost": 25,
+            "notes": "Try the tonkotsu ramen with extra soft-boiled egg.",
+            "completed": true
+          },
+          {
+            "id": "act_103",
+            "time": "20:00",
+            "title": "Tokyo Metropolitan Govt Building Observatory",
+            "category": "Sightseeing",
+            "location": "Nishi-Shinjuku",
+            "cost": 0,
+            "notes": "Free admission! Spectacular 360-degree night view of Tokyo skyline.",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2026-11-11",
+        "title": "Traditional Asakusa & Akihabara",
+        "activities": [
+          {
+            "id": "act_201",
+            "time": "09:00",
+            "title": "Senso-ji Temple & Nakamise Street",
+            "category": "Sightseeing",
+            "location": "Asakusa",
+            "cost": 15,
+            "notes": "Buy traditional melonpan and souvenirs.",
+            "completed": false
+          },
+          {
+            "id": "act_202",
+            "time": "12:30",
+            "title": "Sushi Lunch at Ginza Onodera Express",
+            "category": "Food",
+            "location": "Ginza",
+            "cost": 45,
+            "notes": "Omakase lunch set.",
+            "completed": false
+          },
+          {
+            "id": "act_203",
+            "time": "15:00",
+            "title": "Bullet Train to Kyoto (Shinkansen Nozomi)",
+            "category": "Transport",
+            "location": "Tokyo Station",
+            "cost": 130,
+            "notes": "2 hours 15 mins ride. Mount Fuji view on the right side.",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2026-11-12",
+        "title": "Kyoto Temples & Bamboo Grove",
+        "activities": [
+          {
+            "id": "act_301",
+            "time": "07:30",
+            "title": "Fushimi Inari Taisha Thousand Torii Gates",
+            "category": "Sightseeing",
+            "location": "Fushimi Ward, Kyoto",
+            "cost": 0,
+            "notes": "Arrive early to avoid crowd. Hike up to the Yotsutsuji intersection.",
+            "completed": false
+          },
+          {
+            "id": "act_302",
+            "time": "13:00",
+            "title": "Arashiyama Bamboo Grove & Tenryu-ji",
+            "category": "Sightseeing",
+            "location": "Arashiyama",
+            "cost": 12,
+            "notes": "Walk through bamboo path and zen garden.",
+            "completed": false
+          },
+          {
+            "id": "act_303",
+            "time": "18:30",
+            "title": "Traditional Kaiseki Dinner in Gion",
+            "category": "Food",
+            "location": "Gion, Kyoto",
+            "cost": 95,
+            "notes": "Multi-course seasonal Japanese dining.",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trip_sample_2",
+    "title": "Amalfi Coast Summer Getaway",
+    "destination": "Italy",
+    "startDate": "2026-07-05",
+    "endDate": "2026-07-09",
+    "budget": 3200,
+    "currency": "€",
+    "coverImage": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    "notes": "Book ferry tickets in advance. Pack comfortable walking shoes for coastal steps.",
+    "days": [
+      {
+        "dayNumber": 1,
+        "date": "2026-07-05",
+        "title": "Naples to Positano",
+        "activities": [
+          {
+            "id": "act_401",
+            "time": "11:00",
+            "title": "Private Ferry from Naples to Positano",
+            "category": "Transport",
+            "location": "Molo Beverello",
+            "cost": 40,
+            "notes": "Scenic seaside views on the left.",
+            "completed": false
+          },
+          {
+            "id": "act_402",
+            "time": "19:00",
+            "title": "Sunset Aperitivo at Franco's Bar",
+            "category": "Food",
+            "location": "Positano cliffside",
+            "cost": 35,
+            "notes": "Signature spritz and cliffside sunset.",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  }
+]
